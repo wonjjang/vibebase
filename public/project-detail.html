@@ -1480,6 +1480,7 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
                 // 프로젝트 ID가 없으면 샘플 데이터 사용
                 console.log('No project ID provided, using sample data');
                 currentProject = createSampleProject();
+                saveProject(); // localStorage에 저장
             } else {
                 const tickets = JSON.parse(localStorage.getItem('agileTickets')) || [];
                 console.log('All tickets:', tickets);
@@ -1491,6 +1492,7 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
                     console.log('Project not found. Available IDs:', tickets.map(t => t.id));
                     console.log('Using sample data instead');
                     currentProject = createSampleProject();
+                    saveProject(); // localStorage에 저장
                 }
             }
 
@@ -2208,8 +2210,10 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
             const ticketIndex = tickets.findIndex(t => t.id == currentProject.id);
             if (ticketIndex !== -1) {
                 tickets[ticketIndex] = currentProject;
-                localStorage.setItem('agileTickets', JSON.stringify(tickets));
+            } else {
+                tickets.push(currentProject);
             }
+            localStorage.setItem('agileTickets', JSON.stringify(tickets));
         }
 
         function generateSampleOutput(outputType) {
@@ -2478,7 +2482,7 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
 
         function createSampleProject() {
             const sampleProject = {
-                id: 999,
+                id: 1002,
                 title: "VibeCoding - AI 기반 애자일 런치 플랫폼",
                 description: "AI와 함께 아이디어를 실제 서비스로 발전시키는 10단계 여정을 제공하는 플랫폼. 코딩이나 애자일 지식이 없어도 누구나 체계적으로 서비스를 개발할 수 있도록 지원.",
                 currentStage: 9, // 피처 개선 단계부터 사용자가 진행
