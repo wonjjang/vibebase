@@ -1477,25 +1477,24 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
             const projectId = getProjectId();
             
             if (!projectId) {
-                alert('프로젝트 ID가 없습니다.');
-                window.location.href = '/';
-                return;
-            }
-            
-            const tickets = JSON.parse(localStorage.getItem('agileTickets')) || [];
-            console.log('All tickets:', tickets);
-            console.log('Looking for project ID:', projectId, typeof projectId);
-            
-            currentProject = tickets.find(t => t.id == parseInt(projectId));
-            
-            if (!currentProject) {
-                console.log('Project not found. Available IDs:', tickets.map(t => t.id));
-                alert('프로젝트를 찾을 수 없습니다.');
-                window.location.href = '/';
-                return;
+                // 프로젝트 ID가 없으면 샘플 데이터 사용
+                console.log('No project ID provided, using sample data');
+                currentProject = createSampleProject();
+            } else {
+                const tickets = JSON.parse(localStorage.getItem('agileTickets')) || [];
+                console.log('All tickets:', tickets);
+                console.log('Looking for project ID:', projectId, typeof projectId);
+                
+                currentProject = tickets.find(t => t.id == parseInt(projectId));
+                
+                if (!currentProject) {
+                    console.log('Project not found. Available IDs:', tickets.map(t => t.id));
+                    console.log('Using sample data instead');
+                    currentProject = createSampleProject();
+                }
             }
 
-            console.log('Found project:', currentProject);
+            console.log('Loaded project:', currentProject);
 
             // 프로젝트 타입에 따른 단계 설정
             stages = getStagesForProject(currentProject);
@@ -2693,6 +2692,7 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
 
         // 페이지 로드 시 프로젝트 로드
         loadProject();
+    }
     </script>
 </body>
 </html>
