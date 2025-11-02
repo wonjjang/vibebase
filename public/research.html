@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibebase - 시장조사 & PRD</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #87ceeb;
+            margin-bottom: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+        .problem {
+            border-left-color: #ff6b6b;
+        }
+        .solution {
+            border-left-color: #4ecdc4;
+        }
+        .competitor {
+            border-left-color: #ffa726;
+        }
+        ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .highlight {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .metric {
+            display: inline-block;
+            background: rgba(76, 175, 80, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            margin: 0.2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← 홈으로 돌아가기</a>
+        
+        <h1>📊 Vibebase 시장조사 & PRD</h1>
+        
+        <div class="section">
+            <h2>🔍 시장조사</h2>
+            
+            <h3>📈 데이터 시각화 시장 현황</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>시장 규모</h4>
+                    <ul>
+                        <li>글로벌 데이터 시각화 시장: <span class="highlight">$8.85B (2023)</span></li>
+                        <li>연평균 성장률(CAGR): <span class="highlight">10.2%</span></li>
+                        <li>2030년 예상 규모: <span class="highlight">$19.20B</span></li>
+                        <li>한국 시장 규모: 약 500억원 (추정)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>주요 트렌드</h4>
+                    <ul>
+                        <li>실시간 데이터 분석 수요 증가</li>
+                        <li>셀프서비스 BI 도구 선호</li>
+                        <li>클라우드 기반 솔루션 확산</li>
+                        <li>AI/ML 통합 시각화</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>🎯 타겟 사용자</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>1차 타겟: 중소기업 데이터 분석가</h4>
+                    <ul>
+                        <li>규모: 직원 10-500명 기업</li>
+                        <li>페인포인트: 복잡한 BI 도구, 높은 비용</li>
+                        <li>니즈: 간단하고 직관적인 시각화</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>2차 타겟: 개인 창업자/프리랜서</h4>
+                    <ul>
+                        <li>규모: 1-10명 소규모 팀</li>
+                        <li>페인포인트: 예산 부족, 기술적 진입장벽</li>
+                        <li>니즈: 저렴하고 사용하기 쉬운 도구</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏢 경쟁사 분석</h2>
+            <div class="grid">
+                <div class="card competitor">
+                    <h4>Tableau</h4>
+                    <ul>
+                        <li><strong>강점:</strong> 강력한 기능, 대기업 선호</li>
+                        <li><strong>약점:</strong> 높은 가격($70/월), 복잡한 UI</li>
+                        <li><strong>시장점유율:</strong> 약 35%</li>
+                    </ul>
+                </div>
+                <div class="card competitor">
+                    <h4>Power BI</h4>
+                    <ul>
+                        <li><strong>강점:</strong> MS 생태계 연동, 합리적 가격</li>
+                        <li><strong>약점:</strong> 제한적 커스터마이징</li>
+                        <li><strong>시장점유율:</strong> 약 25%</li>
+                    </ul>
+                </div>
+                <div class="card competitor">
+                    <h4>Google Data Studio</h4>
+                    <ul>
+                        <li><strong>강점:</strong> 무료, Google 서비스 연동</li>
+                        <li><strong>약점:</strong> 제한적 기능, 성능 이슈</li>
+                        <li><strong>시장점유율:</strong> 약 15%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 문제 정의 & 가설</h2>
+            
+            <div class="card problem">
+                <h3>🔴 핵심 문제</h3>
+                <p><strong>"중소기업과 개인 사용자들이 데이터를 시각화하고 싶지만, 기존 도구들은 너무 복잡하거나 비싸다"</strong></p>
+                
+                <h4>구체적 문제점:</h4>
+                <ul>
+                    <li>Tableau, Power BI는 월 $20-70로 부담스러운 가격</li>
+                    <li>복잡한 인터페이스로 학습 비용이 높음</li>
+                    <li>간단한 차트 하나 만들기도 시간이 오래 걸림</li>
+                    <li>실시간 데이터 연동이 어려움</li>
+                </ul>
+            </div>
+
+            <div class="card solution">
+                <h3>🟢 솔루션 가설</h3>
+                <p><strong>"직관적이고 저렴한 웹 기반 데이터 시각화 도구를 제공하면, 중소기업 사용자들이 쉽게 데이터를 분석하고 의사결정할 수 있을 것이다"</strong></p>
+                
+                <h4>핵심 가치 제안:</h4>
+                <ul>
+                    <li><span class="highlight">간단함:</span> 3클릭 이내로 차트 생성</li>
+                    <li><span class="highlight">저렴함:</span> 월 $5-15 가격대</li>
+                    <li><span class="highlight">실시간:</span> 즉시 데이터 업데이트</li>
+                    <li><span class="highlight">협업:</span> 팀 단위 공유 및 편집</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 MVP PRD (Product Requirements Document)</h2>
+            
+            <h3>🎯 MVP 목표</h3>
+            <div class="card">
+                <p><strong>3개월 내에 기본적인 데이터 시각화와 대시보드 기능을 제공하여 초기 사용자 100명 확보</strong></p>
+            </div>
+
+            <h3>✅ MVP 핵심 기능</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>1. 데이터 입력</h4>
+                    <ul>
+                        <li>CSV 파일 업로드</li>
+                        <li>Google Sheets 연동</li>
+                        <li>수동 데이터 입력</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>2. 기본 차트</h4>
+                    <ul>
+                        <li>선형 차트</li>
+                        <li>막대 차트</li>
+                        <li>원형 차트</li>
+                        <li>기본 커스터마이징</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>3. 간단한 대시보드</h4>
+                    <ul>
+                        <li>차트 배치 및 크기 조정</li>
+                        <li>대시보드 저장/불러오기</li>
+                        <li>공유 링크 생성</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>📊 성공 지표</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>사용자 지표</h4>
+                    <div class="metric">가입자 100명</div>
+                    <div class="metric">월 활성 사용자 50명</div>
+                    <div class="metric">차트 생성 500개</div>
+                </div>
+                <div class="card">
+                    <h4>제품 지표</h4>
+                    <div class="metric">차트 생성 시간 < 2분</div>
+                    <div class="metric">페이지 로딩 < 3초</div>
+                    <div class="metric">사용자 만족도 > 4.0/5.0</div>
+                </div>
+            </div>
+
+            <h3>🚫 MVP에서 제외할 기능</h3>
+            <div class="card">
+                <ul>
+                    <li>고급 통계 분석 (회귀분석, 예측 등)</li>
+                    <li>복잡한 데이터 변환</li>
+                    <li>사용자 권한 관리</li>
+                    <li>API 연동 (DB, 외부 서비스)</li>
+                    <li>모바일 앱</li>
+                </ul>
+            </div>
+
+            <h3>📅 MVP 개발 일정</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>1개월차: 기초</h4>
+                    <ul>
+                        <li>프로젝트 설정</li>
+                        <li>기본 UI/UX 디자인</li>
+                        <li>데이터 입력 기능</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>2개월차: 핵심</h4>
+                    <ul>
+                        <li>차트 생성 엔진</li>
+                        <li>기본 차트 3종</li>
+                        <li>대시보드 레이아웃</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>3개월차: 완성</h4>
+                    <ul>
+                        <li>공유 기능</li>
+                        <li>성능 최적화</li>
+                        <li>베타 테스트</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

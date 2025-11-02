@@ -13,6 +13,10 @@
         "destination": "/req.html"
       },
       {
+        "source": "/research",
+        "destination": "/research.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
