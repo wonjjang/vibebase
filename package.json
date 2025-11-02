@@ -2,18 +2,19 @@
   "name": "vibebase",
   "version": "1.0.0",
   "description": "A modern data visualization and analytics platform",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "react-scripts start",
+    "start": "node server.js",
+    "dev": "node server.js",
     "build": "mkdir -p build && cp -r public/* build/",
     "test": "echo \"No tests specified\" && exit 0",
-    "eject": "react-scripts eject",
     "deploy": "npm run build && firebase deploy"
   },
   "keywords": ["data-visualization", "analytics", "dashboard", "charts"],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

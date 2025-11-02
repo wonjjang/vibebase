@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile Launch Service 4.0</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f6fa; }
+        .header { background: #2f3542; color: white; padding: 1rem; text-align: center; }
+        .pipeline { display: flex; gap: 1rem; padding: 1rem; overflow-x: auto; min-height: calc(100vh - 80px); }
+        .stage { background: white; border-radius: 8px; min-width: 250px; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; }
+        .stage-header { font-weight: bold; margin-bottom: 1rem; padding: 0.5rem; border-radius: 4px; text-align: center; font-size: 0.9rem; }
+        .stage-number { position: absolute; top: -10px; left: 10px; background: #007bff; color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; }
+        .stage1 { background: #e8f4fd; color: #1e3a8a; }
+        .stage2 { background: #fef3c7; color: #92400e; }
+        .stage3 { background: #f3e8ff; color: #6b21a8; }
+        .stage4 { background: #d1fae5; color: #065f46; }
+        .stage5 { background: #fee2e2; color: #991b1b; }
+        .stage6 { background: #f0f9ff; color: #0c4a6e; }
+        .stage7 { background: #fef7cd; color: #a16207; }
+        .stage8 { background: #ecfdf5; color: #14532d; }
+        .stage9 { background: #fdf2f8; color: #831843; }
+        .stage10 { background: #f1f5f9; color: #334155; }
+        .ticket { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 1rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.2s; }
+        .ticket:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .ticket-title { font-weight: 600; margin-bottom: 0.5rem; }
+        .ticket-desc { font-size: 0.85rem; color: #6c757d; margin-bottom: 0.5rem; }
+        .ticket-stage { font-size: 0.75rem; color: #007bff; font-weight: 500; margin-bottom: 0.5rem; }
+        .ticket-output { font-size: 0.75rem; color: #28a745; }
+        .add-ticket { background: #e9ecef; border: 2px dashed #adb5bd; color: #6c757d; text-align: center; padding: 1rem; cursor: pointer; border-radius: 6px; }
+        .add-ticket:hover { background: #dee2e6; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .modal-content { background: white; margin: 5% auto; padding: 2rem; width: 90%; max-width: 600px; border-radius: 8px; max-height: 80vh; overflow-y: auto; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.25rem; font-weight: 600; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; }
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; margin-right: 0.5rem; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .json-output { background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.8rem; white-space: pre-wrap; margin: 0.5rem 0; }
+        .progress-bar { width: 100%; height: 4px; background: #e9ecef; border-radius: 2px; margin: 0.5rem 0; }
+        .progress-fill { height: 100%; background: #007bff; border-radius: 2px; transition: width 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Agile Launch Service 4.0</h1>
+        <p>하나의 티켓이 10단계를 순차적으로 이동하며 AI가 각 단계별 결과물을 생성</p>
+    </div>
+
+    <div class="pipeline">
+        <div class="stage">
+            <div class="stage-number">1</div>
+            <div class="stage-header stage1">💡 아이디어 등록</div>
+            <div class="add-ticket" onclick="openModal()">+ 새 프로젝트 시작</div>
+            <div id="stage1-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">2</div>
+            <div class="stage-header stage2">🔍 시장 조사</div>
+            <div id="stage2-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">3</div>
+            <div class="stage-header stage3">🧭 문제 정의</div>
+            <div id="stage3-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">4</div>
+            <div class="stage-header stage4">🧪 가설 설정</div>
+            <div id="stage4-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">5</div>
+            <div class="stage-header stage5">🧰 MVP 정의</div>
+            <div id="stage5-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">6</div>
+            <div class="stage-header stage6">🎨 프로토타입</div>
+            <div id="stage6-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">7</div>
+            <div class="stage-header stage7">🧭 실험 설계</div>
+            <div id="stage7-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">8</div>
+            <div class="stage-header stage8">📊 피드백 분석</div>
+            <div id="stage8-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">9</div>
+            <div class="stage-header stage9">🔁 피처 개선</div>
+            <div id="stage9-tickets"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-number">10</div>
+            <div class="stage-header stage10">📝 완료/드롭</div>
+            <div id="stage10-tickets"></div>
+        </div>
+    </div>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <h3>새 프로젝트 시작</h3>
+            <div class="form-group">
+                <label>프로젝트 제목</label>
+                <input type="text" id="projectTitle" placeholder="프로젝트 아이디어를 간단히 설명해주세요">
+            </div>
+            <div class="form-group">
+                <label>상세 설명</label>
+                <textarea id="projectDesc" rows="4" placeholder="아이디어에 대한 자세한 설명을 입력해주세요"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="createProject()">프로젝트 시작</button>
+            <button class="btn btn-secondary" onclick="closeModal()">취소</button>
+        </div>
+    </div>
+
+    <div id="ticketModal" class="modal">
+        <div class="modal-content">
+            <h3 id="ticketModalTitle">티켓 상세</h3>
+            <div id="ticketModalContent"></div>
+            <div id="ticketModalActions"></div>
+        </div>
+    </div>
+
+    <script>
+        const stages = [
+            { id: 1, name: '💡 아이디어 등록', output: 'IdeaSummary' },
+            { id: 2, name: '🔍 시장 조사', output: 'MarketBrief' },
+            { id: 3, name: '🧭 문제 정의', output: 'ProblemDef' },
+            { id: 4, name: '🧪 가설 설정', output: 'Hypotheses' },
+            { id: 5, name: '🧰 MVP 정의', output: 'MVPStories' },
+            { id: 6, name: '🎨 프로토타입', output: 'ProtoPlan' },
+            { id: 7, name: '🧭 실험 설계', output: 'ExperimentPlan' },
+            { id: 8, name: '📊 피드백 분석', output: 'Findings' },
+            { id: 9, name: '🔁 피처 개선', output: 'PrioritizedBacklog' },
+            { id: 10, name: '📝 완료/드롭', output: 'ProjectReport' }
+        ];
+
+        let tickets = JSON.parse(localStorage.getItem('agileTickets4')) || [];
+        let ticketIdCounter = tickets.length > 0 ? Math.max(...tickets.map(t => t.id)) + 1 : 1;
+
+        function openModal() {
+            document.getElementById('projectModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+            document.getElementById('projectTitle').value = '';
+            document.getElementById('projectDesc').value = '';
+        }
+
+        function closeTicketModal() {
+            document.getElementById('ticketModal').style.display = 'none';
+        }
+
+        function createProject() {
+            const title = document.getElementById('projectTitle').value;
+            const desc = document.getElementById('projectDesc').value;
+            
+            if (!title) return alert('프로젝트 제목을 입력해주세요');
+
+            const ticket = {
+                id: ticketIdCounter++,
+                title: title,
+                description: desc,
+                currentStage: 1,
+                outputs: {},
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            tickets.push(ticket);
+            saveTickets();
+            renderTickets();
+            closeModal();
+            
+            alert(`"${title}" 프로젝트가 시작되었습니다!`);
+        }
+
+        function moveToNextStage(ticketId) {
+            const ticket = tickets.find(t => t.id === ticketId);
+            if (!ticket || ticket.currentStage >= 10) return;
+
+            const currentStage = stages[ticket.currentStage - 1];
+            
+            // Claude 산출물 생성 시뮬레이션
+            alert(`🤖 Claude가 "${currentStage.name}" 단계를 수행 중입니다...`);
+            
+            setTimeout(() => {
+                // 샘플 산출물 생성
+                const sampleOutput = generateSampleOutput(currentStage.output);
+                ticket.outputs[ticket.currentStage] = sampleOutput;
+                
+                // 다음 단계로 이동
+                ticket.currentStage++;
+                ticket.updatedAt = new Date().toISOString();
+                
+                saveTickets();
+                renderTickets();
+                
+                alert(`✅ "${currentStage.name}" 단계 완료! 다음 단계로 이동했습니다.`);
+            }, 2000);
+        }
+
+        function generateSampleOutput(outputType) {
+            const samples = {
+                'IdeaSummary': {
+                    "idea_title": "혁신적인 서비스",
+                    "problem_one_liner": "사용자들이 겪는 핵심 문제 해결",
+                    "target_user": "20-30대 직장인",
+                    "value_prop": "시간 절약과 편의성 제공",
+                    "assumptions": ["사용자들이 이 문제를 중요하게 생각한다", "기존 솔루션에 불만족한다"]
+                },
+                'MarketBrief': {
+                    "comparables": [{"name":"경쟁사A","similarity":"유사한 기능","difference":"우리만의 차별점"}],
+                    "tam_sam_som": {"tam_note":"전체 시장 100억","sam_note":"서비스 가능 시장 10억","som_note":"점유 가능 시장 1억"},
+                    "risks": ["경쟁 심화","기술적 난이도"],
+                    "opportunities": ["시장 성장","사용자 니즈 증가"],
+                    "go_no_go_hint": "go"
+                },
+                'Findings': {
+                    "themes": [{"name":"긍정적 피드백","evidence":["사용자 만족도 높음","재사용 의향 있음"]}],
+                    "decision": "go",
+                    "rationale": "검증 결과 긍정적",
+                    "next_actions": ["기능 개선","사용자 확대"]
+                }
+            };
+            
+            return samples[outputType] || { "result": `${outputType} 산출물 생성 완료` };
+        }
+
+        function viewTicket(ticketId) {
+            const ticket = tickets.find(t => t.id === ticketId);
+            if (!ticket) return;
+
+            const progress = (ticket.currentStage - 1) / 10 * 100;
+            const currentStageInfo = stages[ticket.currentStage - 1];
+            
+            document.getElementById('ticketModalTitle').textContent = ticket.title;
+            document.getElementById('ticketModalContent').innerHTML = `
+                <div class="form-group">
+                    <label>프로젝트 설명</label>
+                    <p>${ticket.description}</p>
+                </div>
+                <div class="form-group">
+                    <label>현재 단계</label>
+                    <p>${currentStageInfo.name} (${ticket.currentStage}/10)</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progress}%"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>생성된 산출물</label>
+                    ${Object.keys(ticket.outputs).map(stage => `
+                        <div style="margin: 0.5rem 0;">
+                            <strong>단계 ${stage}: ${stages[stage-1].name}</strong>
+                            <div class="json-output">${JSON.stringify(ticket.outputs[stage], null, 2)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            document.getElementById('ticketModalActions').innerHTML = `
+                ${ticket.currentStage <= 10 ? `<button class="btn btn-success" onclick="moveToNextStage(${ticket.id}); closeTicketModal();">다음 단계 진행</button>` : ''}
+                <button class="btn btn-secondary" onclick="closeTicketModal()">닫기</button>
+            `;
+            
+            document.getElementById('ticketModal').style.display = 'block';
+        }
+
+        function renderTicket(ticket) {
+            const progress = (ticket.currentStage - 1) / 10 * 100;
+            const outputCount = Object.keys(ticket.outputs).length;
+            
+            return `
+                <div class="ticket" onclick="viewTicket(${ticket.id})">
+                    <div class="ticket-title">${ticket.title}</div>
+                    <div class="ticket-desc">${ticket.description}</div>
+                    <div class="ticket-stage">단계 ${ticket.currentStage}/10</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progress}%"></div>
+                    </div>
+                    <div class="ticket-output">📄 산출물 ${outputCount}개 생성됨</div>
+                </div>
+            `;
+        }
+
+        function renderTickets() {
+            for (let i = 1; i <= 10; i++) {
+                const stageTickets = tickets.filter(ticket => ticket.currentStage === i);
+                document.getElementById(`stage${i}-tickets`).innerHTML = stageTickets.map(renderTicket).join('');
+            }
+        }
+
+        function saveTickets() {
+            localStorage.setItem('agileTickets4', JSON.stringify(tickets));
+        }
+
+        renderTickets();
+
+        window.onclick = function(event) {
+            const projectModal = document.getElementById('projectModal');
+            const ticketModal = document.getElementById('ticketModal');
+            if (event.target === projectModal) closeModal();
+            if (event.target === ticketModal) closeTicketModal();
+        }
+    </script>
+</body>
+</html>

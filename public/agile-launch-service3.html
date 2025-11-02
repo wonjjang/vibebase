@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile Launch Service 3.0</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f6fa; }
+        .header { background: #2f3542; color: white; padding: 1rem; text-align: center; }
+        .board { display: flex; gap: 1rem; padding: 1rem; overflow-x: auto; min-height: calc(100vh - 80px); }
+        .column { background: white; border-radius: 8px; min-width: 300px; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .column-header { font-weight: bold; margin-bottom: 1rem; padding: 0.5rem; border-radius: 4px; text-align: center; }
+        .idea { background: #e8f4fd; color: #1e3a8a; }
+        .progress { background: #fef3c7; color: #92400e; }
+        .review { background: #f3e8ff; color: #6b21a8; }
+        .done { background: #d1fae5; color: #065f46; }
+        .dropped { background: #fee2e2; color: #991b1b; }
+        .card { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 0.75rem; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.2s; position: relative; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .card-title { font-weight: 600; margin-bottom: 0.25rem; font-size: 0.9rem; }
+        .card-desc { font-size: 0.8rem; color: #6c757d; margin-bottom: 0.5rem; }
+        .card-output { font-size: 0.75rem; color: #007bff; font-weight: 500; }
+        .card-step { position: absolute; top: 0.5rem; right: 0.5rem; background: #007bff; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; }
+        .add-card { background: #e9ecef; border: 2px dashed #adb5bd; color: #6c757d; text-align: center; padding: 1rem; cursor: pointer; }
+        .add-card:hover { background: #dee2e6; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .modal-content { background: white; margin: 5% auto; padding: 2rem; width: 90%; max-width: 500px; border-radius: 8px; max-height: 80vh; overflow-y: auto; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.25rem; font-weight: 600; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; }
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-secondary { background: #6c757d; color: white; margin-left: 0.5rem; }
+        .output-modal { max-width: 800px; }
+        .output-content { background: #f8f9fa; padding: 1rem; border-radius: 4px; margin: 1rem 0; }
+        .json-output { background: #2d3748; color: #e2e8f0; padding: 1rem; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.8rem; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Agile Launch Service 3.0</h1>
+        <p>AI와 함께 애자일하게 서비스를 만들어가는 플랫폼 (10단계 완전 버전)</p>
+    </div>
+
+    <div class="board">
+        <div class="column">
+            <div class="column-header idea">🧠 Idea</div>
+            <div class="add-card" onclick="openModal()">+ 새 아이디어 추가</div>
+            <div id="idea-cards"></div>
+        </div>
+
+        <div class="column">
+            <div class="column-header progress">⚙️ In Progress</div>
+            <div id="progress-cards"></div>
+        </div>
+
+        <div class="column">
+            <div class="column-header review">🔍 Review</div>
+            <div id="review-cards"></div>
+        </div>
+
+        <div class="column">
+            <div class="column-header done">✅ Done</div>
+            <div id="done-cards"></div>
+        </div>
+
+        <div class="column">
+            <div class="column-header dropped">❌ Dropped</div>
+            <div id="dropped-cards"></div>
+        </div>
+    </div>
+
+    <div id="ideaModal" class="modal">
+        <div class="modal-content">
+            <h3>새 아이디어 등록</h3>
+            <div class="form-group">
+                <label>아이디어 제목</label>
+                <input type="text" id="ideaTitle" placeholder="아이디어를 간단히 설명해주세요">
+            </div>
+            <div class="form-group">
+                <label>상세 설명</label>
+                <textarea id="ideaDesc" rows="4" placeholder="아이디어에 대한 자세한 설명을 입력해주세요"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="createIdea()">아이디어 등록</button>
+            <button class="btn btn-secondary" onclick="closeModal()">취소</button>
+        </div>
+    </div>
+
+    <div id="outputModal" class="modal">
+        <div class="modal-content output-modal">
+            <h3 id="outputTitle">Claude 산출물</h3>
+            <div id="outputContent"></div>
+            <button class="btn btn-secondary" onclick="closeOutputModal()">닫기</button>
+        </div>
+    </div>
+
+    <script>
+        const defaultCards = [
+            { id: 1, step: 1, title: '💡 아이디어 등록', desc: '아이디어를 구조화', output: 'IdeaSummary' },
+            { id: 2, step: 2, title: '🔍 시장 조사', desc: '시장 적합성 및 경쟁 분석', output: 'MarketBrief' },
+            { id: 3, step: 3, title: '🧭 문제 정의', desc: '핵심 문제 및 성공 지표 정의', output: 'ProblemDef' },
+            { id: 4, step: 4, title: '🧪 가설 설정', desc: 'SMART 기준의 가설 작성', output: 'Hypotheses' },
+            { id: 5, step: 5, title: '🧰 최소 기능 정의 (MVP)', desc: '검증용 최소 기능 도출', output: 'MVPStories' },
+            { id: 6, step: 6, title: '🎨 프로토타입 제작', desc: '화면 및 흐름 설계', output: 'ProtoPlan' },
+            { id: 7, step: 7, title: '🧭 실험 설계', desc: '검증 실험 계획', output: 'ExperimentPlan' },
+            { id: 8, step: 8, title: '📊 피드백 분석', desc: '실험 결과 요약 및 Go/No-Go 판단', output: 'Findings' },
+            { id: 9, step: 9, title: '🔁 피처 개선', desc: 'Go일 경우 다음 기능 개선', output: 'PrioritizedBacklog' },
+            { id: 10, step: 10, title: '📝 드롭/완료 리포트', desc: 'No-Go일 경우 종료, Go일 경우 회고 작성', output: 'ProjectReport' }
+        ];
+
+        const outputSchemas = {
+            'IdeaSummary': {
+                "idea_title": "혁신적인 아이디어",
+                "problem_one_liner": "사용자들이 겪는 핵심 문제",
+                "target_user": "주요 타겟 사용자",
+                "value_prop": "제공하는 핵심 가치",
+                "assumptions": ["가정 1", "가정 2"]
+            },
+            'MarketBrief': {
+                "comparables": [{"name":"경쟁사","url":"","similarity":"유사점","difference":"차별점"}],
+                "tam_sam_som": {"tam_note":"전체 시장","sam_note":"서비스 가능 시장","som_note":"점유 가능 시장"},
+                "risks": ["위험요소1","위험요소2"],
+                "opportunities": ["기회요소1","기회요소2"],
+                "go_no_go_hint": "go"
+            },
+            'Findings': {
+                "themes": [{"name":"주요 발견","evidence":["증거1","증거2"]}],
+                "decision": "go",
+                "rationale": "진행 근거",
+                "next_actions": ["다음 액션1","다음 액션2"]
+            }
+        };
+
+        let cards = JSON.parse(localStorage.getItem('agileCards3')) || [];
+        let cardIdCounter = cards.length > 0 ? Math.max(...cards.map(c => c.id)) + 1 : 1;
+
+        function openModal() {
+            document.getElementById('ideaModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('ideaModal').style.display = 'none';
+            document.getElementById('ideaTitle').value = '';
+            document.getElementById('ideaDesc').value = '';
+        }
+
+        function closeOutputModal() {
+            document.getElementById('outputModal').style.display = 'none';
+        }
+
+        function createIdea() {
+            const title = document.getElementById('ideaTitle').value;
+            const desc = document.getElementById('ideaDesc').value;
+            
+            if (!title) return alert('아이디어 제목을 입력해주세요');
+
+            defaultCards.forEach(card => {
+                cards.push({
+                    ...card,
+                    id: cardIdCounter++,
+                    projectTitle: title,
+                    projectDesc: desc,
+                    status: 'idea',
+                    createdAt: new Date().toISOString(),
+                    claudeOutput: null
+                });
+            });
+
+            saveCards();
+            renderCards();
+            closeModal();
+            
+            alert(`"${title}" 프로젝트의 10단계 카드가 생성되었습니다!`);
+        }
+
+        function moveCard(cardId, newStatus) {
+            const card = cards.find(c => c.id === cardId);
+            if (card) {
+                card.status = newStatus;
+                
+                if (newStatus === 'progress') {
+                    setTimeout(() => {
+                        generateClaudeOutput(card);
+                    }, 500);
+                }
+                
+                saveCards();
+                renderCards();
+            }
+        }
+
+        function generateClaudeOutput(card) {
+            alert(`🤖 Claude가 "${card.title}" 단계를 수행 중입니다...`);
+            
+            setTimeout(() => {
+                const schema = outputSchemas[card.output] || { "result": "산출물 생성 완료" };
+                card.claudeOutput = schema;
+                card.status = 'review';
+                
+                // 피드백 분석 단계에서 Go/No-Go 분기
+                if (card.step === 8) {
+                    const decision = schema.decision || 'go';
+                    if (decision === 'go') {
+                        // 피처 개선 카드 활성화
+                        const featureCard = cards.find(c => c.step === 9 && c.projectTitle === card.projectTitle);
+                        if (featureCard) featureCard.enabled = true;
+                    } else {
+                        // 드롭 리포트 카드 활성화
+                        const dropCard = cards.find(c => c.step === 10 && c.projectTitle === card.projectTitle);
+                        if (dropCard) dropCard.enabled = true;
+                    }
+                }
+                
+                saveCards();
+                renderCards();
+                showOutput(card);
+            }, 2000);
+        }
+
+        function showOutput(card) {
+            document.getElementById('outputTitle').textContent = `${card.title} - Claude 산출물`;
+            document.getElementById('outputContent').innerHTML = `
+                <div class="output-content">
+                    <h4>📋 산출물 타입: ${card.output}</h4>
+                    <div class="json-output">${JSON.stringify(card.claudeOutput, null, 2)}</div>
+                </div>
+            `;
+            document.getElementById('outputModal').style.display = 'block';
+        }
+
+        function renderCard(card) {
+            const isDisabled = card.step > 8 && !card.enabled;
+            const opacity = isDisabled ? 'opacity: 0.5;' : '';
+            
+            return `
+                <div class="card" draggable="true" ondragstart="drag(event)" data-id="${card.id}" style="${opacity}" onclick="viewOutput(${card.id})">
+                    <div class="card-step">${card.step}</div>
+                    <div class="card-title">${card.title}</div>
+                    <div class="card-desc">${card.desc}</div>
+                    <div class="card-output">📄 ${card.output}</div>
+                    ${card.projectTitle ? `<small style="color: #007bff;">프로젝트: ${card.projectTitle}</small>` : ''}
+                    ${card.claudeOutput ? '<div style="color: #28a745; font-size: 0.7rem;">✅ 산출물 생성됨</div>' : ''}
+                </div>
+            `;
+        }
+
+        function viewOutput(cardId) {
+            const card = cards.find(c => c.id === cardId);
+            if (card && card.claudeOutput) {
+                showOutput(card);
+            }
+        }
+
+        function renderCards() {
+            const columns = {
+                idea: document.getElementById('idea-cards'),
+                progress: document.getElementById('progress-cards'),
+                review: document.getElementById('review-cards'),
+                done: document.getElementById('done-cards'),
+                dropped: document.getElementById('dropped-cards')
+            };
+
+            Object.keys(columns).forEach(status => {
+                columns[status].innerHTML = cards
+                    .filter(card => card.status === status)
+                    .sort((a, b) => a.step - b.step)
+                    .map(renderCard)
+                    .join('');
+            });
+        }
+
+        function saveCards() {
+            localStorage.setItem('agileCards3', JSON.stringify(cards));
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.dataset.id);
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drop(ev, status) {
+            ev.preventDefault();
+            const cardId = parseInt(ev.dataTransfer.getData("text"));
+            moveCard(cardId, status);
+        }
+
+        document.querySelectorAll('.column').forEach((column, index) => {
+            const statuses = ['idea', 'progress', 'review', 'done', 'dropped'];
+            column.addEventListener('dragover', allowDrop);
+            column.addEventListener('drop', (ev) => drop(ev, statuses[index]));
+        });
+
+        renderCards();
+
+        window.onclick = function(event) {
+            const ideaModal = document.getElementById('ideaModal');
+            const outputModal = document.getElementById('outputModal');
+            if (event.target === ideaModal) closeModal();
+            if (event.target === outputModal) closeOutputModal();
+        }
+    </script>
+</body>
+</html>
