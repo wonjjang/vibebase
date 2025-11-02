@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile Launch Service - Vibebase</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #2c3e50; margin-bottom: 10px; }
+        .header p { color: #7f8c8d; font-size: 1.1em; }
+        
+        .board { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .column { background: #f8f9fa; border-radius: 8px; padding: 20px; }
+        .column h3 { color: #2c3e50; margin-bottom: 15px; text-align: center; }
+        .card { background: white; border-radius: 6px; padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); }
+        .card h4 { color: #34495e; margin-bottom: 8px; }
+        .card p { color: #7f8c8d; font-size: 0.9em; }
+        
+        .todo { border-left: 4px solid #95a5a6; }
+        .in-progress { border-left: 4px solid #f39c12; }
+        .done { border-left: 4px solid #27ae60; }
+        
+        .overview { background: #ecf0f1; border-radius: 8px; padding: 30px; margin-bottom: 30px; }
+        .overview h2 { color: #2c3e50; margin-bottom: 20px; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .feature { background: white; padding: 20px; border-radius: 6px; }
+        .feature h3 { color: #34495e; margin-bottom: 10px; }
+        
+        .roles { margin-top: 40px; }
+        .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .role-card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 20px; }
+        .role-card h3 { color: #2c3e50; margin-bottom: 10px; }
+        .role-card .goal { background: #e8f5e8; padding: 10px; border-radius: 4px; margin: 10px 0; }
+        
+        .nav { text-align: center; margin-bottom: 30px; }
+        .nav a { color: #3498db; text-decoration: none; margin: 0 15px; }
+        .nav a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="index.html">← 홈으로 돌아가기</a>
+        </div>
+        
+        <div class="header">
+            <h1>🚀 Agile Launch Service</h1>
+            <p>AI와 함께 애자일하게 서비스를 만들어가는 플랫폼</p>
+        </div>
+
+        <div class="overview">
+            <h2>📘 서비스 개요</h2>
+            <p>코딩을 모르는 일반인도 AI와 협력하여 아이디어를 실제 서비스로 발전시킬 수 있는 보드 기반 플랫폼입니다.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3>🎯 보드 기반 워크플로우</h3>
+                    <p>트렐로/노션 스타일의 직관적인 보드에서 카드를 이동하여 작업을 진행합니다.</p>
+                </div>
+                <div class="feature">
+                    <h3>🤖 AI 자동 실행</h3>
+                    <p>카드를 'In Progress'로 이동하면 Claude가 해당 단계를 자동으로 수행합니다.</p>
+                </div>
+                <div class="feature">
+                    <h3>📊 구조화된 결과</h3>
+                    <p>각 단계별 작업 결과를 JSON 형태로 구조화하여 보드 카드에 기록합니다.</p>
+                </div>
+                <div class="feature">
+                    <h3>⚡ 우선순위 조정</h3>
+                    <p>카드 상하 이동으로 AI가 실행할 우선순위를 실시간으로 조정할 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; margin-bottom: 30px;">📋 애자일 런치 보드</h2>
+        
+        <div class="board">
+            <div class="column">
+                <h3>📝 To Do</h3>
+                <div class="card todo">
+                    <h4>1️⃣ 아이디어 등록</h4>
+                    <p>아이디어를 문제/고객/가치로 구조화</p>
+                </div>
+                <div class="card todo">
+                    <h4>2️⃣ 시장 조사</h4>
+                    <p>문제-시장 적합성 1차 점검</p>
+                </div>
+                <div class="card todo">
+                    <h4>3️⃣ 문제 정의</h4>
+                    <p>문제 가설 명문화</p>
+                </div>
+                <div class="card todo">
+                    <h4>4️⃣ 가설 설정</h4>
+                    <p>SMART 기준 가설 2~3개 설정</p>
+                </div>
+            </div>
+            
+            <div class="column">
+                <h3>🔄 In Progress</h3>
+                <div class="card in-progress">
+                    <h4>5️⃣ 최소 기능 정의 (MVP)</h4>
+                    <p>검증을 위한 최소 기능 도출</p>
+                </div>
+            </div>
+            
+            <div class="column">
+                <h3>✅ Done</h3>
+                <div class="card done">
+                    <h4>🎯 프로젝트 시작</h4>
+                    <p>초기 아이디어 및 목표 설정 완료</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="roles">
+            <h2 style="text-align: center; margin-bottom: 30px;">🤖 AI 역할 정의</h2>
+            
+            <div class="role-grid">
+                <div class="role-card">
+                    <h3>6️⃣ 프로토타입 제작</h3>
+                    <div class="goal">Goal: 간단한 프로토타입 계획</div>
+                    <p><strong>Output:</strong> 화면 구성, 컴포넌트, 플로우, 빌드 지시사항</p>
+                </div>
+                
+                <div class="role-card">
+                    <h3>7️⃣ 실험 설계</h3>
+                    <div class="goal">Goal: 실험 계획 및 지표 확정</div>
+                    <p><strong>Output:</strong> 참가자, 절차, 측정 지표, 타임라인</p>
+                </div>
+                
+                <div class="role-card">
+                    <h3>8️⃣ 피드백 분석</h3>
+                    <div class="goal">Goal: 결과 요약 및 인사이트 도출</div>
+                    <p><strong>Output:</strong> 테마, 지표 요약, 가설 검증, 다음 액션</p>
+                </div>
+                
+                <div class="role-card">
+                    <h3>9️⃣ 피처 개선</h3>
+                    <div class="goal">Goal: 우선순위 재정렬</div>
+                    <p><strong>Output:</strong> 스토리 순위, 스토리 맵, 스프린트 제안</p>
+                </div>
+                
+                <div class="role-card">
+                    <h3>🔟 진행/드롭 결정</h3>
+                    <div class="goal">Goal: 프로젝트 지속 여부 판단</div>
+                    <p><strong>Output:</strong> 결정, 근거, 리스크, 완화 방안, 교훈</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #2c3e50; color: white; padding: 30px; border-radius: 8px; margin-top: 40px; text-align: center;">
+            <h2>🎯 Claude 실행 명령어</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div>
+                    <code>@Claude run --stage="시장 조사"</code>
+                    <p style="margin-top: 5px; opacity: 0.8;">해당 단계 자동 실행</p>
+                </div>
+                <div>
+                    <code>@Claude revise --what="가설 수정"</code>
+                    <p style="margin-top: 5px; opacity: 0.8;">현재 결과 재작성</p>
+                </div>
+                <div>
+                    <code>@Claude suggest-next</code>
+                    <p style="margin-top: 5px; opacity: 0.8;">다음 단계 제안</p>
+                </div>
+                <div>
+                    <code>@Claude decide --mode="go_no_go"</code>
+                    <p style="margin-top: 5px; opacity: 0.8;">프로젝트 진행 여부 결정</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 카드 드래그 앤 드롭 시뮬레이션
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                if (this.classList.contains('todo')) {
+                    this.classList.remove('todo');
+                    this.classList.add('in-progress');
+                    // 실제로는 여기서 AI 실행 트리거
+                    console.log('AI 실행:', this.querySelector('h4').textContent);
+                } else if (this.classList.contains('in-progress')) {
+                    this.classList.remove('in-progress');
+                    this.classList.add('done');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
