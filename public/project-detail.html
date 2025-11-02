@@ -2014,20 +2014,7 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
         }
         }
 
-        function renderStageContent(stageIndex) {
-                    <div class="content-subtitle">${stage.desc}</div>
-                    ${statusBadge}
-                </div>
-                ${expertSection}
-                ${actionSection}
-                ${outputSection}
-            `;
-
-            // 현재 단계이고 결과물이 없으면 자동으로 AI 실행
-            if (isCurrent && !hasOutput) {
-                setTimeout(() => {
-                    executeWithLLM(stageId);
-                }, 1000);
+        function executeAIExpert(stageId) {
             }
         }
 
