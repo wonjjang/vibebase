@@ -1511,12 +1511,21 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
         }
 
         function updateProjectInfo() {
-            document.getElementById('sidebarProjectTitle').textContent = currentProject.title;
-            document.getElementById('sidebarProjectDesc').textContent = currentProject.description;
+            console.log('updateProjectInfo called with:', currentProject);
+            console.log('Title element:', document.getElementById('sidebarProjectTitle'));
+            console.log('Desc element:', document.getElementById('sidebarProjectDesc'));
             
-            const progress = (currentProject.currentStage - 1) / 10 * 100;
-            document.getElementById('sidebarProgress').textContent = `${Math.round(progress)}%`;
-            document.getElementById('sidebarProgressBar').style.width = `${progress}%`;
+            if (currentProject && document.getElementById('sidebarProjectTitle')) {
+                document.getElementById('sidebarProjectTitle').textContent = currentProject.title;
+                document.getElementById('sidebarProjectDesc').textContent = currentProject.description;
+                
+                const progress = (currentProject.currentStage - 1) / 10 * 100;
+                document.getElementById('sidebarProgress').textContent = `${Math.round(progress)}%`;
+                document.getElementById('sidebarProgressBar').style.width = `${progress}%`;
+                console.log('Project info updated successfully');
+            } else {
+                console.error('Missing currentProject or DOM elements');
+            }
         }
 
         function renderStageMenu() {
@@ -1564,10 +1573,28 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
         }
 
         function renderStageContent(stageId) {
+            console.log('renderStageContent called with stageId:', stageId);
+            console.log('stages array:', stages);
+            console.log('currentProject:', currentProject);
+            
+            if (!stages || stages.length === 0) {
+                console.error('No stages available');
+                return;
+            }
+            
             const stage = stages[stageId - 1];
+            console.log('Selected stage:', stage);
+            
+            if (!stage) {
+                console.error('Stage not found for stageId:', stageId);
+                return;
+            }
+            
             const isCompleted = stageId < currentProject.currentStage;
             const isCurrent = stageId === currentProject.currentStage;
             const hasOutput = currentProject.outputs[stageId];
+            
+            console.log('Stage status:', { isCompleted, isCurrent, hasOutput });
             
             let statusBadge = '';
             if (isCompleted) {
@@ -2485,6 +2512,7 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
                 id: 1002,
                 title: "VibeCoding - AI 기반 애자일 런치 플랫폼",
                 description: "AI와 함께 아이디어를 실제 서비스로 발전시키는 10단계 여정을 제공하는 플랫폼. 코딩이나 애자일 지식이 없어도 누구나 체계적으로 서비스를 개발할 수 있도록 지원.",
+                type: 'discovery',
                 currentStage: 9, // 피처 개선 단계부터 사용자가 진행
                 outputs: {
                     1: {
