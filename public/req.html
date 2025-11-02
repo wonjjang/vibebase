@@ -86,6 +86,10 @@
         .back-link:hover {
             background: rgba(255, 255, 255, 0.3);
         }
+        .user-flow {
+            background: rgba(135, 206, 235, 0.1);
+            border-left-color: #87ceeb;
+        }
     </style>
 </head>
 <body>
@@ -98,43 +102,84 @@
             <h2>🎯 핵심 기능</h2>
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h3>프로젝트 대시보드 <span class="status todo">할 일</span></h3>
+                    <h3>간단한 온보딩 시스템 <span class="status todo">할 일</span></h3>
                     <ul>
-                        <li>전체 진행률 시각화</li>
-                        <li>주요 지표 요약 (커밋, 이슈, PR)</li>
-                        <li>팀원별 기여도 현황</li>
-                        <li>마일스톤 진행상황</li>
-                        <li>실시간 활동 피드</li>
+                        <li>3-5개 간단한 질문 폼</li>
+                        <li>목표 파악 (웹, 앱, 게임, 데이터 분석)</li>
+                        <li>경험 수준 확인 (완전 초보 ~ 기초)</li>
+                        <li>선호 학습 방식 (영상, 텍스트, 실습)</li>
+                        <li>사용 가능한 시간 (주당 시간)</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>Git 연동 분석 <span class="status todo">할 일</span></h3>
+                    <h3>맞춤형 가이드 생성 <span class="status todo">할 일</span></h3>
                     <ul>
-                        <li>GitHub/GitLab 저장소 연결</li>
-                        <li>커밋 활동 분석 및 시각화</li>
-                        <li>코드 변경량 추적</li>
-                        <li>브랜치 전략 모니터링</li>
-                        <li>Pull Request 분석</li>
+                        <li>개인별 학습 로드맵 자동 생성</li>
+                        <li>목표 기반 언어/도구 추천</li>
+                        <li>단계별 체크리스트 제공</li>
+                        <li>예상 학습 시간 및 일정</li>
+                        <li>다음 단계 안내</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>개발 생산성 측정 <span class="status todo">할 일</span></h3>
+                    <h3>환경 설정 도우미 <span class="status todo">할 일</span></h3>
                     <ul>
-                        <li>일일/주간 개발 속도</li>
-                        <li>이슈 해결 시간 분석</li>
-                        <li>코드 리뷰 효율성</li>
-                        <li>배포 빈도 및 성공률</li>
-                        <li>개발자별 생산성 지표</li>
+                        <li>운영체제별 설치 가이드</li>
+                        <li>필수 도구 자동 설치 스크립트</li>
+                        <li>설정 완료 확인 체크리스트</li>
+                        <li>문제 해결 FAQ</li>
+                        <li>설정 검증 도구</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>알림 & 리포트 시스템 <span class="status todo">할 일</span></h3>
+                    <h3>첫 프로젝트 템플릿 <span class="status todo">할 일</span></h3>
                     <ul>
-                        <li>진행 지연 자동 알림</li>
-                        <li>주간/월간 개발 리포트</li>
-                        <li>팀 성과 요약</li>
-                        <li>개선 제안사항</li>
-                        <li>이메일/슬랙 알림 연동</li>
+                        <li>목표별 스타터 프로젝트</li>
+                        <li>단계별 구현 가이드</li>
+                        <li>상세한 코드 설명 및 주석</li>
+                        <li>확장 아이디어 제안</li>
+                        <li>완성 후 다음 프로젝트 추천</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>👤 사용자 플로우</h2>
+            <div class="feature-grid">
+                <div class="feature-item user-flow">
+                    <h3>1단계: 첫 방문</h3>
+                    <ul>
+                        <li>랜딩 페이지에서 "시작하기" 버튼</li>
+                        <li>간단한 서비스 소개 (30초 이내)</li>
+                        <li>바로 질문 시작 가능</li>
+                    </ul>
+                </div>
+                <div class="feature-item user-flow">
+                    <h3>2단계: 온보딩</h3>
+                    <ul>
+                        <li>질문 1: "무엇을 만들고 싶나요?"</li>
+                        <li>질문 2: "프로그래밍 경험이 있나요?"</li>
+                        <li>질문 3: "어떻게 배우는 걸 좋아하나요?"</li>
+                        <li>질문 4: "주당 몇 시간 투자 가능한가요?"</li>
+                    </ul>
+                </div>
+                <div class="feature-item user-flow">
+                    <h3>3단계: 가이드 생성</h3>
+                    <ul>
+                        <li>개인 맞춤 학습 계획 생성</li>
+                        <li>추천 언어 및 도구 제시</li>
+                        <li>첫 주 학습 계획 제공</li>
+                        <li>환경 설정 가이드 링크</li>
+                    </ul>
+                </div>
+                <div class="feature-item user-flow">
+                    <h3>4단계: 실행</h3>
+                    <ul>
+                        <li>환경 설정 단계별 진행</li>
+                        <li>첫 번째 "Hello World" 프로젝트</li>
+                        <li>성공 확인 및 축하 메시지</li>
+                        <li>다음 프로젝트 제안</li>
                     </ul>
                 </div>
             </div>
@@ -147,30 +192,30 @@
                     <h3>프론트엔드 개발 <span class="status progress">진행중</span></h3>
                     <ul>
                         <li>React + TypeScript 설정</li>
-                        <li>실시간 대시보드 UI</li>
-                        <li>차트 및 데이터 시각화</li>
+                        <li>단계별 온보딩 플로우 UI</li>
+                        <li>가이드 표시 컴포넌트</li>
                         <li>반응형 디자인</li>
-                        <li>상태 관리 (Redux/Zustand)</li>
+                        <li>진행률 표시 UI</li>
                     </ul>
                 </div>
                 <div class="feature-item">
                     <h3>백엔드 개발 <span class="status todo">할 일</span></h3>
                     <ul>
-                        <li>Node.js/Express API 서버</li>
-                        <li>GitHub/GitLab API 연동</li>
-                        <li>데이터 수집 및 분석 엔진</li>
-                        <li>실시간 데이터 동기화</li>
-                        <li>사용자 인증 및 권한 관리</li>
+                        <li>질문 응답 처리 API</li>
+                        <li>가이드 생성 로직</li>
+                        <li>템플릿 관리 시스템</li>
+                        <li>사용자 진행 상황 저장</li>
+                        <li>추천 알고리즘</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>데이터베이스 & 인프라 <span class="status todo">할 일</span></h3>
+                    <h3>콘텐츠 관리 <span class="status todo">할 일</span></h3>
                     <ul>
-                        <li>PostgreSQL 데이터베이스</li>
-                        <li>Redis 캐싱 시스템</li>
-                        <li>시계열 데이터 저장</li>
-                        <li>백그라운드 작업 큐</li>
-                        <li>모니터링 및 로깅</li>
+                        <li>학습 경로 템플릿 작성</li>
+                        <li>프로젝트 스타터 코드</li>
+                        <li>단계별 가이드 문서</li>
+                        <li>FAQ 및 문제 해결 가이드</li>
+                        <li>설치 스크립트 작성</li>
                     </ul>
                 </div>
                 <div class="feature-item">
@@ -189,33 +234,30 @@
             <h2>📅 프로젝트 일정</h2>
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h3>1단계: 기초 인프라 (1개월) <span class="priority">(높은 우선순위)</span></h3>
+                    <h3>1단계: 기초 구조 (2주) <span class="priority">(높은 우선순위)</span></h3>
                     <ul>
-                        <li>프로젝트 아키텍처 설계</li>
-                        <li>GitHub API 연동 구현</li>
-                        <li>기본 대시보드 UI 개발</li>
-                        <li>사용자 인증 시스템</li>
-                        <li>데이터베이스 스키마 설계</li>
+                        <li>온보딩 플로우 UI 설계 및 구현</li>
+                        <li>질문 및 답변 로직 개발</li>
+                        <li>기본 가이드 템플릿 작성</li>
+                        <li>간단한 추천 알고리즘</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>2단계: 핵심 기능 (1개월)</h3>
+                    <h3>2단계: 핵심 기능 (3주)</h3>
                     <ul>
-                        <li>Git 데이터 수집 및 분석</li>
-                        <li>진행률 계산 로직</li>
-                        <li>실시간 모니터링 대시보드</li>
-                        <li>차트 및 시각화 컴포넌트</li>
-                        <li>기본 알림 시스템</li>
+                        <li>맞춤형 가이드 생성 엔진</li>
+                        <li>환경 설정 도우미 구현</li>
+                        <li>첫 프로젝트 템플릿 개발</li>
+                        <li>진행 상황 추적 시스템</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>3단계: 고급 기능 (1개월)</h3>
+                    <h3>3단계: 완성 및 테스트 (3주)</h3>
                     <ul>
-                        <li>생산성 분석 알고리즘</li>
-                        <li>리포트 생성 시스템</li>
-                        <li>팀 협업 기능</li>
+                        <li>사용자 테스트 및 피드백</li>
+                        <li>콘텐츠 보완 및 확장</li>
                         <li>성능 최적화</li>
-                        <li>베타 테스트 및 피드백</li>
+                        <li>런칭 준비</li>
                     </ul>
                 </div>
             </div>
@@ -228,10 +270,10 @@
                 <ul>
                     <li>✅ 프로젝트 구조 및 문서화 설정</li>
                     <li>✅ 배포 파이프라인 구성</li>
-                    <li>🔄 GitHub API 연동 테스트</li>
-                    <li>🔄 기본 대시보드 레이아웃 설계</li>
-                    <li>⏳ 사용자 인증 시스템 구현</li>
-                    <li>⏳ 데이터베이스 스키마 정의</li>
+                    <li>🔄 온보딩 질문 리스트 작성</li>
+                    <li>🔄 기본 UI 컴포넌트 개발</li>
+                    <li>⏳ 가이드 템플릿 초안 작성</li>
+                    <li>⏳ 첫 번째 프로젝트 템플릿 준비</li>
                 </ul>
             </div>
         </div>
@@ -240,39 +282,39 @@
             <h2>💡 추가 기능 아이디어</h2>
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h3>AI 기반 분석</h3>
+                    <h3>학습 지원</h3>
                     <ul>
-                        <li>개발 패턴 분석 및 예측</li>
-                        <li>코드 품질 자동 평가</li>
-                        <li>최적 개발 일정 제안</li>
-                        <li>버그 발생 가능성 예측</li>
+                        <li>진행률 시각화 및 성취 배지</li>
+                        <li>학습 일정 리마인더</li>
+                        <li>막힌 부분 질문 기능</li>
+                        <li>커뮤니티 연결</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>협업 강화</h3>
+                    <h3>개인화</h3>
                     <ul>
-                        <li>팀 커뮤니케이션 분석</li>
-                        <li>코드 리뷰 품질 측정</li>
-                        <li>지식 공유 추적</li>
-                        <li>멘토링 효과 분석</li>
+                        <li>학습 스타일 분석</li>
+                        <li>진도에 따른 난이도 조절</li>
+                        <li>관심사 기반 프로젝트 추천</li>
+                        <li>개인별 학습 통계</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>통합 연동</h3>
+                    <h3>확장 기능</h3>
                     <ul>
-                        <li>Jira, Trello 연동</li>
-                        <li>Slack, Discord 알림</li>
-                        <li>CI/CD 파이프라인 모니터링</li>
-                        <li>클라우드 서비스 연동</li>
+                        <li>팀 프로젝트 매칭</li>
+                        <li>멘토-멘티 연결</li>
+                        <li>포트폴리오 생성 도구</li>
+                        <li>취업 준비 가이드</li>
                     </ul>
                 </div>
                 <div class="feature-item">
-                    <h3>고급 분석</h3>
+                    <h3>기술적 개선</h3>
                     <ul>
-                        <li>기술 부채 측정</li>
-                        <li>개발자 번아웃 지표</li>
-                        <li>프로젝트 리스크 분석</li>
-                        <li>ROI 계산 및 비용 분석</li>
+                        <li>AI 기반 개인화 추천</li>
+                        <li>실시간 코드 실행 환경</li>
+                        <li>자동 코드 검토</li>
+                        <li>학습 패턴 분석</li>
                     </ul>
                 </div>
             </div>
