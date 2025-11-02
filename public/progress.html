@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeCoding - 진척사항 관리</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 0.5rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .task-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+        .task-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .task-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        .progress-0 { width: 0%; background: #ff6b6b; }
+        .progress-25 { width: 25%; background: #ffa726; }
+        .progress-50 { width: 50%; background: #ffeb3b; }
+        .progress-75 { width: 75%; background: #8bc34a; }
+        .progress-100 { width: 100%; background: #4caf50; }
+        .status {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        .not-started { background: #ff6b6b; }
+        .in-progress { background: #ffa726; }
+        .review { background: #2196f3; }
+        .completed { background: #4caf50; }
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .timeline-date {
+            min-width: 100px;
+            font-weight: bold;
+            color: #87ceeb;
+        }
+        .timeline-content {
+            flex: 1;
+            margin-left: 1rem;
+        }
+        ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← 홈으로 돌아가기</a>
+        
+        <h1>📈 VibeCoding 진척사항 관리</h1>
+        
+        <div class="section">
+            <h2>🎯 전체 프로젝트 진행률</h2>
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="task-title">VibeCoding 플랫폼 개발</div>
+                    <span class="status in-progress">진행중</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill progress-25"></div>
+                </div>
+                <p>전체 진행률: 25% (4개 중 1개 완료)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 주요 과제별 진척사항</h2>
+            <div class="progress-grid">
+                <div class="task-card">
+                    <div class="task-header">
+                        <div class="task-title">프로젝트 기획</div>
+                        <span class="status completed">완료</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-100"></div>
+                    </div>
+                    <ul>
+                        <li>✅ 시장조사 완료</li>
+                        <li>✅ PRD 작성 완료</li>
+                        <li>✅ 요구사항 정의 완료</li>
+                        <li>✅ 프로젝트 구조 설계 완료</li>
+                    </ul>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-header">
+                        <div class="task-title">UI/UX 디자인</div>
+                        <span class="status in-progress">진행중</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-50"></div>
+                    </div>
+                    <ul>
+                        <li>✅ 와이어프레임 작성</li>
+                        <li>✅ 메인 페이지 디자인</li>
+                        <li>🔄 온보딩 플로우 디자인</li>
+                        <li>⏳ 대시보드 디자인</li>
+                    </ul>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-header">
+                        <div class="task-title">프론트엔드 개발</div>
+                        <span class="status in-progress">진행중</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-25"></div>
+                    </div>
+                    <ul>
+                        <li>✅ 프로젝트 설정</li>
+                        <li>✅ 기본 페이지 구조</li>
+                        <li>🔄 온보딩 컴포넌트</li>
+                        <li>⏳ 가이드 생성 로직</li>
+                    </ul>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-header">
+                        <div class="task-title">백엔드 개발</div>
+                        <span class="status not-started">시작 전</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-0"></div>
+                    </div>
+                    <ul>
+                        <li>⏳ API 설계</li>
+                        <li>⏳ 데이터베이스 설계</li>
+                        <li>⏳ 사용자 인증</li>
+                        <li>⏳ 가이드 생성 API</li>
+                    </ul>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-header">
+                        <div class="task-title">콘텐츠 제작</div>
+                        <span class="status in-progress">진행중</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-25"></div>
+                    </div>
+                    <ul>
+                        <li>✅ 학습 경로 템플릿 설계</li>
+                        <li>🔄 프로젝트 템플릿 작성</li>
+                        <li>⏳ 환경 설정 가이드</li>
+                        <li>⏳ FAQ 작성</li>
+                    </ul>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-header">
+                        <div class="task-title">테스트 & 배포</div>
+                        <span class="status not-started">시작 전</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill progress-0"></div>
+                    </div>
+                    <ul>
+                        <li>⏳ 사용자 테스트</li>
+                        <li>⏳ 성능 최적화</li>
+                        <li>⏳ 배포 준비</li>
+                        <li>⏳ 런칭</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📅 주간 진행 타임라인</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">11/1 (금)</div>
+                    <div class="timeline-content">
+                        <strong>프로젝트 기획 완료</strong>
+                        <p>시장조사, PRD, 요구사항 정의 완료</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">11/2 (토)</div>
+                    <div class="timeline-content">
+                        <strong>기본 페이지 구조 완성</strong>
+                        <p>메인 페이지, 요구사항 관리, 시장조사 페이지 구현</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">11/4 (월)</div>
+                    <div class="timeline-content">
+                        <strong>온보딩 플로우 개발 시작</strong>
+                        <p>사용자 질문 폼 및 가이드 생성 로직 구현 예정</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">11/8 (금)</div>
+                    <div class="timeline-content">
+                        <strong>MVP 1차 완성 목표</strong>
+                        <p>기본 온보딩 및 가이드 생성 기능 완성</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ 이슈 및 블로커</h2>
+            <div class="progress-grid">
+                <div class="task-card" style="border-left-color: #ff6b6b;">
+                    <h3>🔴 해결 필요</h3>
+                    <ul>
+                        <li>가이드 생성 알고리즘 복잡도 높음</li>
+                        <li>콘텐츠 제작 리소스 부족</li>
+                    </ul>
+                </div>
+                <div class="task-card" style="border-left-color: #ffa726;">
+                    <h3>🟡 모니터링 중</h3>
+                    <ul>
+                        <li>UI/UX 디자인 일정 지연 가능성</li>
+                        <li>백엔드 개발 시작 지연</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

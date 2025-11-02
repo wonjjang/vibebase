@@ -17,6 +17,14 @@
         "destination": "/research.html"
       },
       {
+        "source": "/progress",
+        "destination": "/progress.html"
+      },
+      {
+        "source": "/deliverables",
+        "destination": "/deliverables.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
