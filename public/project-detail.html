@@ -107,6 +107,777 @@
         .typing-dot:nth-child(2) { animation-delay: 0.2s; }
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
         @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
+        
+        /* Enhanced Document Output Styles */
+        .document-output {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .doc-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .doc-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .doc-content {
+            padding: 2rem;
+        }
+        
+        /* Idea Summary Styles */
+        .info-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #007bff;
+        }
+        
+        .info-card h4 {
+            margin: 0 0 1rem 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+        
+        .problem-highlight {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 1rem;
+            color: #856404;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .info-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .info-title {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-desc {
+            color: #6c757d;
+            line-height: 1.5;
+        }
+        
+        .assumptions-section {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .assumptions-section h5 {
+            margin: 0 0 1rem 0;
+            color: #1976d2;
+        }
+        
+        .assumptions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .assumption-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .assumption-number {
+            background: #1976d2;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        /* Market Analysis Styles */
+        .competitors-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .competitors-table th,
+        .competitors-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .competitors-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .tam-chart {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .tam-circle {
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .tam-outer {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border: 3px solid #e91e63;
+        }
+        
+        .tam-middle {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border: 3px solid #00bcd4;
+        }
+        
+        .tam-inner {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+            border: 3px solid #4caf50;
+        }
+        
+        .tam-label {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tam-desc {
+            font-size: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .risk-opportunity {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .risk-section, .opportunity-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .risk-section h5 {
+            color: #dc3545;
+            margin: 0 0 1rem 0;
+        }
+        
+        .opportunity-section h5 {
+            color: #28a745;
+            margin: 0 0 1rem 0;
+        }
+        
+        .risk-item, .opportunity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+        }
+        
+        .decision-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .decision-card {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .decision-go {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+        
+        .decision-no-go {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
+        
+        /* Problem Definition Styles */
+        .statement-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #856404;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .analysis-item {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+        
+        .analysis-item.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .analysis-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.5rem;
+        }
+        
+        .analysis-value {
+            color: #6c757d;
+            line-height: 1.5;
+        }
+        
+        .metrics-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .metric-card {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .metric-name {
+            font-weight: 600;
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-measure {
+            color: #424242;
+            font-size: 0.9rem;
+        }
+        
+        /* Hypotheses Styles */
+        .hypotheses-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .hypothesis-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .hypothesis-header {
+            background: #f8f9fa;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .hypothesis-number {
+            background: #007bff;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .hypothesis-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .criteria-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .criteria-success {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-right: 1px solid #c3e6cb;
+        }
+        
+        .criteria-fail {
+            background: #f8d7da;
+            padding: 1.5rem;
+        }
+        
+        .criteria-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .criteria-text {
+            line-height: 1.5;
+        }
+        
+        /* MVP Stories Styles */
+        .stories-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .story-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .story-card.must-have {
+            border-color: #28a745;
+            box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+        }
+        
+        .story-header {
+            background: #f8f9fa;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .story-id {
+            font-weight: 600;
+            color: #007bff;
+        }
+        
+        .must-have-badge {
+            background: #28a745;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .story-content {
+            padding: 1.5rem;
+        }
+        
+        .story-text {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .acceptance-criteria h6 {
+            margin: 0 0 0.5rem 0;
+            color: #495057;
+        }
+        
+        .acceptance-criteria ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .acceptance-criteria li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .priority-summary {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .priority-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            background: white;
+            min-width: 100px;
+        }
+        
+        .stat-item.must-have {
+            border: 2px solid #28a745;
+        }
+        
+        .stat-item.nice-to-have {
+            border: 2px solid #6c757d;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        
+        /* Findings Styles */
+        .themes-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .theme-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .theme-header {
+            background: #e3f2fd;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .theme-number {
+            background: #2196f3;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .theme-title {
+            font-weight: 600;
+            color: #1976d2;
+        }
+        
+        .evidence-section {
+            padding: 1.5rem;
+        }
+        
+        .evidence-section h6 {
+            margin: 0 0 0.75rem 0;
+            color: #495057;
+        }
+        
+        .evidence-list {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .evidence-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .metrics-table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+        
+        .table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .table-header > div {
+            padding: 1rem;
+            border-right: 1px solid #dee2e6;
+        }
+        
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .table-row > div {
+            padding: 1rem;
+            border-right: 1px solid #dee2e6;
+        }
+        
+        .table-row.success {
+            background: #d4edda;
+        }
+        
+        .table-row.fail {
+            background: #f8d7da;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-badge.success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .status-badge.fail {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .next-steps {
+            background: #fff3cd;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+        
+        .step-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            line-height: 1.5;
+        }
+        
+        /* Product Description Styles */
+        .product-overview {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .product-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .product-status {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .feature-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-desc {
+            color: #6c757d;
+            line-height: 1.5;
+        }
+        
+        .tech-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .tech-category {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .tech-category-name {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tech-tag {
+            background: #007bff;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+        
+        /* Generic Output Styles */
+        .generic-output {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .output-item {
+            display: flex;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+        
+        .output-key {
+            font-weight: 600;
+            color: #495057;
+            min-width: 150px;
+            margin-right: 1rem;
+        }
+        
+        .output-value {
+            color: #6c757d;
+            line-height: 1.5;
+        }
+        
+        .output-text {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid,
+            .risk-opportunity,
+            .criteria-comparison,
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tam-outer {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .tam-middle {
+                width: 170px;
+                height: 170px;
+            }
+            
+            .tam-inner {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .table-header,
+            .table-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .table-header > div,
+            .table-row > div {
+                border-right: none;
+                border-bottom: 1px solid #dee2e6;
+            }
+        }
     </style>
 </head>
 <body>
@@ -857,82 +1628,127 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
             switch (outputType) {
                 case 'IdeaSummary':
                     return `
-                        <div class="structured-output">
-                            <div class="output-field">
-                                <div class="field-label">💡 아이디어 제목</div>
-                                <div class="field-value">${output.idea_title}</div>
+                        <div class="document-output">
+                            <div class="doc-header">
+                                <h3>💡 아이디어 요약서</h3>
                             </div>
-                            <div class="output-field">
-                                <div class="field-label">🎯 핵심 문제 (한 줄 요약)</div>
-                                <div class="field-value">${output.problem_one_liner}</div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">👥 타겟 사용자</div>
-                                <div class="field-value">${output.target_user}</div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">💎 핵심 가치 제안</div>
-                                <div class="field-value">${output.value_prop}</div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">🤔 주요 가정들</div>
-                                <ul class="field-list">
-                                    ${output.assumptions.map(assumption => `<li>${assumption}</li>`).join('')}
-                                </ul>
+                            <div class="doc-content">
+                                <div class="info-card">
+                                    <h4>${output.idea_title}</h4>
+                                    <div class="problem-highlight">
+                                        <strong>핵심 문제:</strong> ${output.problem_one_liner}
+                                    </div>
+                                </div>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <div class="info-icon">👥</div>
+                                        <div class="info-content">
+                                            <div class="info-title">타겟 사용자</div>
+                                            <div class="info-desc">${output.target_user}</div>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">💎</div>
+                                        <div class="info-content">
+                                            <div class="info-title">핵심 가치 제안</div>
+                                            <div class="info-desc">${output.value_prop}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="assumptions-section">
+                                    <h5>🤔 주요 가정들</h5>
+                                    <div class="assumptions-list">
+                                        ${output.assumptions.map((assumption, i) => `
+                                            <div class="assumption-item">
+                                                <span class="assumption-number">${i+1}</span>
+                                                <span class="assumption-text">${assumption}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     `;
                     
                 case 'MarketBrief':
                     return `
-                        <div class="structured-output">
-                            <div class="output-field">
-                                <div class="field-label">🏢 경쟁사 분석</div>
-                                <div class="comparables-grid">
-                                    ${output.comparables.map(comp => `
-                                        <div class="comparable-item">
-                                            <div class="comparable-name">${comp.name}</div>
-                                            <div style="margin: 0.5rem 0;">
-                                                <strong>유사점:</strong> ${comp.similarity}<br>
-                                                <strong>차별점:</strong> ${comp.difference}
+                        <div class="document-output">
+                            <div class="doc-header">
+                                <h3>📊 시장 분석 보고서</h3>
+                            </div>
+                            <div class="doc-content">
+                                <div class="market-overview">
+                                    <h4>🏢 경쟁사 분석</h4>
+                                    <div class="competitors-table">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>경쟁사</th>
+                                                    <th>유사점</th>
+                                                    <th>차별점</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${output.comparables.map(comp => `
+                                                    <tr>
+                                                        <td><strong>${comp.name}</strong></td>
+                                                        <td>${comp.similarity}</td>
+                                                        <td>${comp.difference}</td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div class="market-size">
+                                    <h4>📈 시장 규모 분석</h4>
+                                    <div class="tam-chart">
+                                        <div class="tam-circle tam-outer">
+                                            <div class="tam-label">TAM</div>
+                                            <div class="tam-desc">${output.tam_sam_som.tam_note}</div>
+                                            <div class="tam-circle tam-middle">
+                                                <div class="tam-label">SAM</div>
+                                                <div class="tam-desc">${output.tam_sam_som.sam_note}</div>
+                                                <div class="tam-circle tam-inner">
+                                                    <div class="tam-label">SOM</div>
+                                                    <div class="tam-desc">${output.tam_sam_som.som_note}</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">📊 시장 규모 (TAM/SAM/SOM)</div>
-                                <div class="tam-som-grid">
-                                    <div class="tam-item">
-                                        <div class="tam-label">TAM (전체 시장)</div>
-                                        <div class="tam-value">${output.tam_sam_som.tam_note}</div>
-                                    </div>
-                                    <div class="tam-item">
-                                        <div class="tam-label">SAM (서비스 가능 시장)</div>
-                                        <div class="tam-value">${output.tam_sam_som.sam_note}</div>
-                                    </div>
-                                    <div class="tam-item">
-                                        <div class="tam-label">SOM (점유 가능 시장)</div>
-                                        <div class="tam-value">${output.tam_sam_som.som_note}</div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">⚠️ 주요 위험요소</div>
-                                <ul class="field-list">
-                                    ${output.risks.map(risk => `<li>${risk}</li>`).join('')}
-                                </ul>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">🚀 시장 기회</div>
-                                <ul class="field-list">
-                                    ${output.opportunities.map(opp => `<li>${opp}</li>`).join('')}
-                                </ul>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">🎯 Go/No-Go 힌트</div>
-                                <div class="field-value">
-                                    <span class="decision-badge decision-${output.go_no_go_hint}">${output.go_no_go_hint.toUpperCase()}</span>
+                                
+                                <div class="risk-opportunity">
+                                    <div class="risk-section">
+                                        <h5>⚠️ 주요 위험요소</h5>
+                                        <div class="risk-list">
+                                            ${output.risks.map(risk => `
+                                                <div class="risk-item">
+                                                    <span class="risk-icon">⚠️</span>
+                                                    <span>${risk}</span>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                    <div class="opportunity-section">
+                                        <h5>🚀 시장 기회</h5>
+                                        <div class="opportunity-list">
+                                            ${output.opportunities.map(opp => `
+                                                <div class="opportunity-item">
+                                                    <span class="opportunity-icon">🚀</span>
+                                                    <span>${opp}</span>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="decision-section">
+                                    <h5>🎯 추천 결정</h5>
+                                    <div class="decision-card decision-${output.go_no_go_hint}">
+                                        <div class="decision-badge">${output.go_no_go_hint.toUpperCase()}</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -940,81 +1756,129 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
                     
                 case 'ProblemDef':
                     return `
-                        <div class="structured-output">
-                            <div class="output-field">
-                                <div class="field-label">📋 문제 명세서</div>
-                                <div class="field-value">${output.problem_statement}</div>
+                        <div class="document-output">
+                            <div class="doc-header">
+                                <h3>🔍 문제 정의서</h3>
                             </div>
-                            <div class="output-field">
-                                <div class="field-label">🔍 문제 상황 분석</div>
-                                <div class="criteria-grid">
-                                    <div class="criteria-item">
-                                        <strong>누가:</strong> ${output.who_when_why.who}
-                                    </div>
-                                    <div class="criteria-item">
-                                        <strong>언제:</strong> ${output.who_when_why.when}
+                            <div class="doc-content">
+                                <div class="problem-statement">
+                                    <h4>📋 문제 명세서</h4>
+                                    <div class="statement-box">
+                                        ${output.problem_statement}
                                     </div>
                                 </div>
-                                <div class="field-value" style="margin-top: 0.5rem;">
-                                    <strong>왜:</strong> ${output.who_when_why.why}
-                                </div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">📊 핵심 성공 지표</div>
-                                ${output.leading_metrics.map(metric => `
-                                    <div class="metric-item">
-                                        <div class="hypothesis-header">${metric.name}</div>
-                                        <div>측정 방법: ${metric.how_to_measure}</div>
+                                <div class="problem-analysis">
+                                    <h4>🔍 문제 상황 분석</h4>
+                                    <div class="analysis-grid">
+                                        <div class="analysis-item">
+                                            <div class="analysis-label">👤 누가</div>
+                                            <div class="analysis-value">${output.who_when_why.who}</div>
+                                        </div>
+                                        <div class="analysis-item">
+                                            <div class="analysis-label">⏰ 언제</div>
+                                            <div class="analysis-value">${output.who_when_why.when}</div>
+                                        </div>
+                                        <div class="analysis-item full-width">
+                                            <div class="analysis-label">❓ 왜</div>
+                                            <div class="analysis-value">${output.who_when_why.why}</div>
+                                        </div>
                                     </div>
-                                `).join('')}
+                                </div>
+                                <div class="metrics-section">
+                                    <h4>📊 핵심 성공 지표</h4>
+                                    <div class="metrics-cards">
+                                        ${output.leading_metrics.map(metric => `
+                                            <div class="metric-card">
+                                                <div class="metric-name">${metric.name}</div>
+                                                <div class="metric-measure">측정 방법: ${metric.how_to_measure}</div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     `;
                     
                 case 'Hypotheses':
                     return `
-                        <div class="structured-output">
-                            ${output.hypotheses.map(hyp => `
-                                <div class="hypothesis-item">
-                                    <div class="hypothesis-header">${hyp.id}: ${hyp.statement}</div>
-                                    <div class="criteria-grid">
-                                        <div class="criteria-item success">
-                                            <strong>성공 기준:</strong> ${hyp.success_criteria}
+                        <div class="document-output">
+                            <div class="doc-header">
+                                <h3>🧪 가설 설정서</h3>
+                            </div>
+                            <div class="doc-content">
+                                <div class="hypotheses-list">
+                                    ${output.hypotheses.map((hyp, i) => `
+                                        <div class="hypothesis-card">
+                                            <div class="hypothesis-header">
+                                                <span class="hypothesis-number">${i+1}</span>
+                                                <span class="hypothesis-title">${hyp.statement}</span>
+                                            </div>
+                                            <div class="criteria-comparison">
+                                                <div class="criteria-success">
+                                                    <div class="criteria-label">✅ 성공 기준</div>
+                                                    <div class="criteria-text">${hyp.success_criteria}</div>
+                                                </div>
+                                                <div class="criteria-fail">
+                                                    <div class="criteria-label">❌ 실패 기준</div>
+                                                    <div class="criteria-text">${hyp.fail_criteria}</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="criteria-item fail">
-                                            <strong>실패 기준:</strong> ${hyp.fail_criteria}
-                                        </div>
-                                    </div>
+                                    `).join('')}
                                 </div>
-                            `).join('')}
+                            </div>
                         </div>
                     `;
                     
                 case 'MVPStories':
                     return `
-                        <div class="structured-output">
-                            <div class="output-field">
-                                <div class="field-label">📝 사용자 스토리</div>
-                                ${output.stories.map(story => `
-                                    <div class="story-item">
-                                        <div class="story-header">${story.id}: ${story.as_a}로서</div>
-                                        <div style="margin: 0.5rem 0;">
-                                            <strong>원하는 것:</strong> ${story.i_want}<br>
-                                            <strong>목적:</strong> ${story.so_that}
+                        <div class="document-output">
+                            <div class="doc-header">
+                                <h3>📝 MVP 사용자 스토리</h3>
+                            </div>
+                            <div class="doc-content">
+                                <div class="stories-section">
+                                    <h4>사용자 스토리 목록</h4>
+                                    <div class="stories-grid">
+                                        ${output.stories.map(story => `
+                                            <div class="story-card ${output.must_have_ids.includes(story.id) ? 'must-have' : ''}">
+                                                <div class="story-header">
+                                                    <span class="story-id">${story.id}</span>
+                                                    ${output.must_have_ids.includes(story.id) ? '<span class="must-have-badge">Must-Have</span>' : ''}
+                                                </div>
+                                                <div class="story-content">
+                                                    <div class="story-text">
+                                                        <strong>${story.as_a}</strong>로서, 
+                                                        <strong>${story.i_want}</strong>하고 싶다. 
+                                                        왜냐하면 <strong>${story.so_that}</strong>이기 때문이다.
+                                                    </div>
+                                                    <div class="acceptance-criteria">
+                                                        <h6>인수 기준:</h6>
+                                                        <ul>
+                                                            ${story.acceptance_criteria.map(criteria => `<li>${criteria}</li>`).join('')}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                                <div class="priority-summary">
+                                    <h4>우선순위 요약</h4>
+                                    <div class="priority-stats">
+                                        <div class="stat-item">
+                                            <div class="stat-number">${output.stories.length}</div>
+                                            <div class="stat-label">총 스토리</div>
                                         </div>
-                                        <div>
-                                            <strong>인수 기준:</strong>
-                                            <ul style="margin-left: 1rem; margin-top: 0.25rem;">
-                                                ${story.acceptance_criteria.map(criteria => `<li>${criteria}</li>`).join('')}
-                                            </ul>
+                                        <div class="stat-item must-have">
+                                            <div class="stat-number">${output.must_have_ids.length}</div>
+                                            <div class="stat-label">Must-Have</div>
+                                        </div>
+                                        <div class="stat-item nice-to-have">
+                                            <div class="stat-number">${output.stories.length - output.must_have_ids.length}</div>
+                                            <div class="stat-label">Nice-to-Have</div>
                                         </div>
                                     </div>
-                                `).join('')}
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">⭐ Must-Have 기능</div>
-                                <div class="field-value">
-                                    ${output.must_have_ids.join(', ')}
                                 </div>
                             </div>
                         </div>
@@ -1022,31 +1886,132 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
                     
                 case 'Findings':
                     return `
-                        <div class="structured-output">
-                            <div class="output-field">
-                                <div class="field-label">🔍 주요 발견사항</div>
-                                <div class="themes-container">
-                                    ${output.themes.map(theme => `
-                                        <div class="theme-item">
-                                            <div class="theme-name">${theme.name}</div>
-                                            <ul class="evidence-list">
-                                                ${theme.evidence.map(evidence => `<li>${evidence}</li>`).join('')}
-                                            </ul>
+                        <div class="document-output">
+                            <div class="doc-header">
+                                <h3>🔍 실험 결과 보고서</h3>
+                            </div>
+                            <div class="doc-content">
+                                <div class="findings-overview">
+                                    <h4>주요 발견사항</h4>
+                                    <div class="themes-grid">
+                                        ${output.themes.map((theme, i) => `
+                                            <div class="theme-card">
+                                                <div class="theme-header">
+                                                    <span class="theme-number">${i+1}</span>
+                                                    <span class="theme-title">${theme.name}</span>
+                                                </div>
+                                                <div class="evidence-section">
+                                                    <h6>근거 자료:</h6>
+                                                    <ul class="evidence-list">
+                                                        ${theme.evidence.map(evidence => `<li>${evidence}</li>`).join('')}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                                
+                                <div class="metrics-dashboard">
+                                    <h4>📊 지표 달성 현황</h4>
+                                    <div class="metrics-table">
+                                        <div class="table-header">
+                                            <div>지표명</div>
+                                            <div>실제값</div>
+                                            <div>목표값</div>
+                                            <div>달성여부</div>
                                         </div>
-                                    `).join('')}
+                                        ${output.metrics_summary.map(metric => `
+                                            <div class="table-row ${metric.met ? 'success' : 'fail'}">
+                                                <div class="metric-name">${metric.metric}</div>
+                                                <div class="metric-value">${metric.value}</div>
+                                                <div class="metric-threshold">${metric.threshold}</div>
+                                                <div class="metric-status">
+                                                    <span class="status-badge ${metric.met ? 'success' : 'fail'}">
+                                                        ${metric.met ? '✅ 달성' : '❌ 미달성'}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                                
+                                <div class="recommendations">
+                                    <h4>💡 다음 단계 추천</h4>
+                                    <div class="next-steps">
+                                        ${output.next_steps.map(step => `
+                                            <div class="step-item">
+                                                <span class="step-icon">👉</span>
+                                                <span class="step-text">${step}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="output-field">
-                                <div class="field-label">📊 지표 달성 현황</div>
-                                <div class="metrics-grid">
-                                    <div class="metric-row" style="font-weight: 600; background: #f8f9fa;">
-                                        <div>지표</div><div>실제값</div><div>목표값</div><div>달성여부</div>
+                        </div>
+                    `;
+                    
+                case 'ProductDescription':
+                    return `
+                        <div class="document-output">
+                            <div class="doc-header">
+                                <h3>📋 제품 명세서</h3>
+                            </div>
+                            <div class="doc-content">
+                                <div class="product-overview">
+                                    <div class="product-title">${output.product_name || '제품명'}</div>
+                                    <div class="product-status">${output.current_status}</div>
+                                </div>
+                                <div class="features-section">
+                                    <h4>🎯 핵심 기능</h4>
+                                    <div class="features-grid">
+                                        ${output.key_features.map(feature => `
+                                            <div class="feature-card">
+                                                <div class="feature-name">${feature.name}</div>
+                                                <div class="feature-desc">${feature.description}</div>
+                                            </div>
+                                        `).join('')}
                                     </div>
-                                    ${output.metrics_summary.map(metric => `
-                                        <div class="metric-row">
-                                            <div>${metric.metric}</div>
-                                            <div>${metric.value}</div>
-                                            <div>${metric.threshold}</div>
+                                </div>
+                                <div class="tech-section">
+                                    <h4>🔧 기술 스택</h4>
+                                    <div class="tech-grid">
+                                        ${Object.entries(output.tech_stack).map(([category, techs]) => `
+                                            <div class="tech-category">
+                                                <div class="tech-category-name">${category}</div>
+                                                <div class="tech-list">
+                                                    ${techs.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                default:
+                    return `
+                        <div class="document-output">
+                            <div class="doc-header">
+                                <h3>📄 산출물</h3>
+                            </div>
+                            <div class="doc-content">
+                                <div class="generic-output">
+                                    ${typeof output === 'object' ? 
+                                        Object.entries(output).map(([key, value]) => `
+                                            <div class="output-item">
+                                                <div class="output-key">${key}:</div>
+                                                <div class="output-value">${Array.isArray(value) ? value.join(', ') : value}</div>
+                                            </div>
+                                        `).join('') : 
+                                        `<div class="output-text">${output}</div>`
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    `;
+            }
+        }
                                             <div class="${metric.pass ? 'metric-pass' : 'metric-fail'}">
                                                 ${metric.pass ? '✅ 달성' : '❌ 미달성'}
                                             </div>
