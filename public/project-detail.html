@@ -2012,72 +2012,9 @@ JSON 형식: {"current_status": "", "pain_points": [], "improvement_goals": [], 
                     `;
             }
         }
-                                            <div class="${metric.pass ? 'metric-pass' : 'metric-fail'}">
-                                                ${metric.pass ? '✅ 달성' : '❌ 미달성'}
-                                            </div>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">🎯 최종 결정</div>
-                                <div class="field-value">
-                                    <span class="decision-badge decision-${output.decision}">${output.decision.toUpperCase()}</span>
-                                    <div style="margin-top: 1rem;">${output.rationale}</div>
-                                </div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">📋 다음 액션</div>
-                                <ul class="field-list">
-                                    ${output.next_actions.map(action => `<li>${action}</li>`).join('')}
-                                </ul>
-                            </div>
-                        </div>
-                    `;
-                    
-                case 'ProductDescription':
-                    return `
-                        <div class="structured-output">
-                            <div class="output-field">
-                                <div class="field-label">📊 현재 제품 상태</div>
-                                <div class="field-value">${output.current_status}</div>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">⚠️ 주요 문제점</div>
-                                <ul class="field-list">
-                                    ${output.pain_points.map(point => `<li>${point}</li>`).join('')}
-                                </ul>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">🎯 개선 목표</div>
-                                <ul class="field-list">
-                                    ${output.improvement_goals.map(goal => `<li>${goal}</li>`).join('')}
-                                </ul>
-                            </div>
-                            <div class="output-field">
-                                <div class="field-label">📈 성공 지표</div>
-                                ${output.success_metrics.map(metric => `
-                                    <div class="metric-item">
-                                        <div class="hypothesis-header">${metric.name}</div>
-                                        <div style="margin: 0.5rem 0;">
-                                            <strong>현재값:</strong> ${metric.current}<br>
-                                            <strong>목표값:</strong> ${metric.target}<br>
-                                            <strong>측정방법:</strong> ${metric.measurement}
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                    
-                default:
-                    return `<div class="json-output">${JSON.stringify(output, null, 2)}</div>`;
-            }
         }
 
-            document.getElementById('stageContent').innerHTML = `
-                <div class="content-header">
-                    <div class="content-title">${stage.name}</div>
+        function renderStageContent(stageIndex) {
                     <div class="content-subtitle">${stage.desc}</div>
                     ${statusBadge}
                 </div>
