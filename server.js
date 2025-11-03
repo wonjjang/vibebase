@@ -3,6 +3,12 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+// CSP 헤더 설정 - 인라인 스크립트 허용
+app.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none';");
+    next();
+});
+
 // 정적 파일 서빙
 app.use(express.static('public'));
 
